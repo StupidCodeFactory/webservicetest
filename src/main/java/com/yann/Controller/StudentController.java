@@ -3,17 +3,12 @@ package com.yann.Controller;
 import com.yann.Entity.Student;
 import com.yann.Service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
-/**
- * Created by yann on 30/04/2017.
- */
 @RestController
 @RequestMapping("/students")
 public class StudentController {
@@ -35,4 +30,11 @@ public class StudentController {
     public void deleteStudentById(@PathVariable("id") int id) {
         this.studentService.removeStudentById(id);
     }
+
+    @RequestMapping(method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public void updateStudent(@RequestBody Student student) {
+        this.studentService.updateStudent(student);
+    }
+
+
 }

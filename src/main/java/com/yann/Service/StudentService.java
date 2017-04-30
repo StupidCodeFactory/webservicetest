@@ -8,10 +8,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 
-/**
- * Created by yann on 30/04/2017.
- */
-
 @Service
 public class StudentService {
 
@@ -19,7 +15,7 @@ public class StudentService {
     private StudentDao studentDao;
 
     public Collection<Student> getAllStudents() {
-        return this.studentDao.getAllStudents();
+        return studentDao.getAllStudents();
     }
 
     public Student getStudentById(int id) {
@@ -28,5 +24,9 @@ public class StudentService {
 
     public void removeStudentById(int id) {
         this.studentDao.removeStudeById(id);
+    }
+
+    public void updateStudent(Student student) {
+        this.studentDao.updateStudentById(student);
     }
 }

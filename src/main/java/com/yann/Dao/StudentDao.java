@@ -7,9 +7,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by yann on 30/04/2017.
- */
 @Repository
 public class StudentDao {
     private static Map<Integer, Student> students;
@@ -26,14 +23,21 @@ public class StudentDao {
     }
 
     public Collection getAllStudents() {
-        return this.students.values();
+        return students.values();
     }
 
     public Student getStudentById(int id) {
-        return this.students.get(id);
+        return students.get(id);
     }
 
     public void removeStudeById(int id) {
-        this.students.remove(id);
+        students.remove(id);
+    }
+
+    public void updateStudentById(Student student) {
+        Student s= students.get(student.getId());
+        s.setCourse(student.getCourse());
+        s.setName(student.getName());
+        students.put(student.getId(), s);
     }
 }
